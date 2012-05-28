@@ -5,7 +5,7 @@
    <tlib-version>1.0.0</tlib-version>
    <display-name>DataTables Taglib</display-name>
    <short-name>datatables</short-name>
-   <uri>http://blog.tduchateau.fr/datatables-taglib</uri>
+   <uri>http://github.com/tduchateau/DataTables-taglib</uri>
    <description>JSP taglib for the JQuery plugin DataTables</description>
       
    <tag-file>
