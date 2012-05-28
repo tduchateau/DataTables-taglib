@@ -1,0 +1,1 @@
+mvn -DaltDeploymentRepository=tduchateau-release-maven-repo::default::file:../tduchateau-maven-repo/releases clean deploy
