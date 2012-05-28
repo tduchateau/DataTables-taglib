@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<meta name="description" content="DataTables-taglib" />
+<meta name="author" content="Thibault Duchateau">
+
+<link href="stylesheets/bootstrap.css" rel="stylesheet" />
+<link href="stylesheets/jquery.dataTables.css" rel="stylesheet">
+<link href="stylesheets/shCore.css" rel="stylesheet" />
+<link href="stylesheets/shThemeDefault.css" rel="stylesheet" />
+<link href="stylesheets/shThemeEclipse.css" rel="stylesheet" />
+
+<script src="javascripts/syntaxhighlighter/shCore.js"></script>
+<script src="javascripts/syntaxhighlighter/shBrushXml.js"></script>
+<script src="javascripts/jquery-1.7.1.min.js"></script>
+<script src="javascripts/bootstrap.js"></script>
+<script src="javascripts/jquery.dataTables.js"></script>
+
+<style type="text/css">
+   body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+   }
+   
+   .zip_download_link {
+      display: block;
+      float: left;
+      width: 90px;
+      height: 70px;
+      text-indent: -5000px;
+      overflow: hidden;
+      background: url(images/sprite_download.png) no-repeat bottom left;
+   }
+   
+   .tar_download_link {
+      display: block;
+      float: left;
+      width: 90px;
+      height: 70px;
+      text-indent: -5000px;
+      overflow: hidden;
+      background: url(images/sprite_download.png) no-repeat bottom right;
+   }
+   
+   .zip_download_link:hover {
+      background: url(images/sprite_download.png) no-repeat top left;
+   }
+   
+   .tar_download_link:hover {
+      background: url(images/sprite_download.png) no-repeat top right;
+   }
+</style>
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<title>DataTables-taglib</title>
+</head>
+
+<body>
+   <a href="https://github.com/tduchateau/DataTables-Taglib"> <img
+      style="position: fixed; top: 40px; right: 0; border: 0;"
+      src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+      alt="Fork me on GitHub">
+   </a>
+
+   <div class="navbar navbar-fixed-top" style="text-align: center;">
+      <div class="navbar-inner">
+         <div class="container">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span
+               class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+            </a> <a class="brand" href="#"><img src="images/avatar_tres_petit.png"
+               style="float: left;" width="25px" height="25px" />&nbsp;DataTables Taglib</a>
+            <div class="nav-collapse">
+               <ul class="nav">
+                  <li><a href="index.html">Overview</a></li>
+                  <li><a href="features.html">Features</a></li>
+                  <li><a href="basic.html">Basic example</a></li>
+                  <li><a href="reference.html">Reference</a></li>
+                  <li class="active"><a href="#">Download</a></li>
+               </ul>
+               <ul class="nav pull-right">
+                  <li class="dropdown"><a href="#" class="dropdown-toggle"  data-toggle="dropdown"> Dependencies<b class="caret"></b></a>
+                     <ul class="dropdown-menu" style="text-align: left;">
+                        <li><a href="http://jquery.com/" target="_BLANK">JQuery</a></li>
+                        <li><a href="http://datatables.net" target="_BLANK">DataTables</a></li>
+                        <li class="divider"></li>
+                        <li><a href="http://jstl.java.net/" target="_BLANK">JSTL</a></li>
+                     </ul>
+                  </li>
+                  <li class="divider-vertical"></li>
+                  <li><a href="https://github.com/tduchateau/DataTables-Taglib">Repo Git</a></li>
+                  <li><a href="http://blog.tduchateau.fr">Blog</a></li>
+               </ul>
+            </div>
+            <!-- /.nav-collapse -->
+         </div>
+      </div>
+      <!-- /navbar-inner -->
+   </div>
+
+   <div class="container">
+      <div class="hero-unit" style="text-align: center;">
+         <span style="font-size: 45px; font-weight: bold;">DataTables Taglib</span>
+      </div>
+
+      <div class="row">
+         <div class="span12">
+            <h2>Download</h2>
+            <hr />
+         </div>
+      </div>
+      
+      <div class="row">
+         <div class="span12">
+            <h3>Manually</h3>
+            <p>
+               Clic <a  href="https://github.com/tduchateau/DataTables-Taglib/downloads">this</a> link !
+            </p>
+            <br />
+            <h3>Maven</h3>
+            <p>Add the following repository in your pom.xml :</p>
+            <p>
+<pre class="brush: xml">
+<repositories>
+   <repository>
+      <id>tduchateau-maven-repo</id>
+      <url>https://raw.github.com/tduchateau/tduchateau-maven-repo/master/releases</url>
+   </repository>
+</repositories> 
+</pre>
+            </p>
+            <br />
+            <p>And declare the following dependency :</p>
+            <p>
+<pre class="brush: xml">
+<dependency>
+   <groupId>fr.tduchateau</groupId>
+   <artifactId>datatables-taglib</artifactId>
+   <version>1.0.0</version>
+</dependency>     
+</pre>
+            </p>
+            <br />
+            <h3>Download sources</h3>
+            <div>
+               <a class="zip_download_link" href="https://github.com/tduchateau/DataTables-Taglib/zipball/master">
+                  Download this project as a .zip file</a>
+               <a class="tar_download_link" href="https://github.com/tduchateau/DataTables-Taglib/tarball/master">
+                  Download this project as a tar.gz file
+               </a>
+            </div>
+         </div>
+      </div>
+
+      <footer style="padding-top: 180px; text-align: left;">
+         <p>
+            <!-- Footer <span style="font-size: 11px;"> &copy; Thibault Duchateau</span> -->
+         </p>
+      </footer>
+      <script>
+         $(document).ready(function() {
+   		  	SyntaxHighlighter.all();
+         });
+      	</script>
+   </div>
+</body>
+</html>
