@@ -6,7 +6,7 @@
    <display-name>DataTables Taglib</display-name>
    <short-name>datatables</short-name>
    <uri>http://github.com/tduchateau/DataTables-taglib</uri>
-   <description>JSP taglib for the JQuery plugin DataTables.</description>
+   <description>JSP taglib for the JQuery plugin DataTables</description>
       
    <tag-file>
       <name>column</name>
