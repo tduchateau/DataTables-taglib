@@ -204,7 +204,7 @@
    </c:forTokens>
    <c:set var="dataTableSortProperty" value="${dataTableSortProperty}]" />
 </c:if>
-extraFilterIdProperty = <c:out value="${extraFilterIdProperty }" />
+
 <script type="text/javascript">
    function fnCreateSelect( aData ){
       var r='<option value=""></option>', i, iLen=aData.length;
