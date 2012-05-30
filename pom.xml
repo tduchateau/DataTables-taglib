@@ -4,10 +4,10 @@
 
    <groupId>fr.tduchateau</groupId>
    <artifactId>datatables-taglib</artifactId>
-   <version>1.0.0</version>
+   <version>1.0.1</version>
    <packaging>jar</packaging>
 
-   <name>datatables-taglib</name>
+   <name>DataTables-taglib</name>
    <url>http://tduchateau.github.com/DataTables-Taglib/</url>
 
    <properties>
