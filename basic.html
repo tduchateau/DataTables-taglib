@@ -128,9 +128,11 @@
       &lt;datatables:column title="Name" property="firstName" sortable="true" />
       &lt;datatables:column title="Email" property="email" sortable="true" />
       &lt;datatables:column title="City" sortable="true">
-         &lt;c:out value="${address.city.label}"></c:out>
+         &lt;c:out value="${row.address.city.label}"></c:out>
       &lt;/datatables:column>
-      &lt;datatables:column title="Street" property="street1" sortable="true" />
+      &lt;datatables:column title="Street" sortable="true">
+         &lt;c:out value="${row.address.street1}"></c:out>
+      &lt;/datatables:column>
    </datatables:table>
 </pre>                     
             </p>
