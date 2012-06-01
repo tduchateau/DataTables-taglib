@@ -149,20 +149,32 @@
                <span class="badge badge-inverse">2/4</span> As for the JSTL, you'll need the Datatables-taglib jar. See the <a href="download.html">Download</a> tab.
             </p>
             <p>
-               <span class="badge badge-inverse">3/4</span> Then, as Javascript libraries are not imported in the tags, you'll have to do it by yourself (anyway, you probably already use JQuery, don't you ? :))
+               <span class="badge badge-inverse">3/4</span> Then, as Javascript libraries and CSS are not imported in the tags, you'll have to do it by yourself (anyway, you probably already use JQuery, don't you ? :))
             </p>
             <p>
 <pre class="brush: xml">
-<script src="/js/jquery-1.7.1.min.js"></script>
-<script src="/js/jquery.dataTables.js"></script>
+<link href="/css/jquery.dataTables.css" rel="stylesheet">
+
+<script src="/js/jquery-1.7.2.min.js"></script>
+<script src="/js/jquery.dataTables.min.js"></script>
 </pre>
             </p>
             <p>
-               Moreover, as some default configuration uses the Twitter's Bootstrap, add the Bootstrap's CSS. 
+               If you want to use the default configuration (which uses the Twitter's Bootstrap), add the Bootstrap's CSS. 
             </p>
             <p>
 <pre class="brush: xml">
-<link href="css/bootstrap.min.css" rel="stylesheet" />
+<link href="/css/bootstrap.min.css" rel="stylesheet" />
+</pre>
+            </p>
+            <p>
+               And if you want to use the filterable attribute of the column tag, <a href="http://datatables.net/extras/tabletools/">TableTools</a> is needed :
+            </p>
+            <p>
+<pre class="brush: xml">
+<link href="/css/jquery.dataTables.TableTools.css" rel="stylesheet">
+
+<script src="/js/jquery.dataTables.TableTools.js"/></script>
 </pre>
             </p>
             <p>
@@ -174,7 +186,12 @@
 </pre>
             </p>
             <p>
-               Then, you can finally use the taglib ! See the <a href="basic.html">basic examples</a> tab to start.
+               Then, you can finally use the taglib ! 
+            </p>
+            <p>
+              See the <a href="basic.html">basic examples</a> tab to start.<br />
+              See the <a href="reference.html">reference</a> to know all can do ! (for now)<br />
+              See the taglib in action in the <a href="features.html">features</a> !<br />       
             </p>
          </div>
       </div>
@@ -186,7 +203,15 @@
             <h3>Something's missing ?</h3>
             <p>
                Don't hesitate to <a href="https://github.com/tduchateau/DataTables-Taglib/pulls">pull some requests</a> on GitHub or even fork the taglib.<br />
-               You can also use the <a href="http://datatables.net/forums/discussion/10138/jsp-taglib-for-datatables#Item_1">DataTables forum</a>.<br />
+            </p>
+         </div>
+      </div>
+      
+      <div class="row">
+         <div class="span12">
+            <h3>Need help ?</h3>
+            <p>
+               You can use the <a href="http://datatables.net/forums/discussion/10138/">DataTables forum</a>.
             </p>
          </div>
       </div>
