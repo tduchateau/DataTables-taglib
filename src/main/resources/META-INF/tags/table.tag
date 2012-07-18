@@ -3,9 +3,9 @@
    http://tduchateau.github.com/DataTables-Taglib
    
    Copyright (c) 2012 Thibault Duchateau
-   Licensed under the GPL license.
+   Licensed under the GNU GPLv2 license.
    
-   Version : 1.0.0
+   Version : 1.0.3
  --%>
 <%@ tag language="java" pageEncoding="ISO-8859-1" description="Creates a HTML table with JQuery and JQuery DataTables plugin."  %>
 
@@ -28,12 +28,23 @@
 <%@ attribute name="labels" required="false" rtexprvalue="true" type="java.lang.String" description="Base URL of an AJAX loaded file which contains all the labels used in tables. This attribute is the value for the sUrl DataTable parameter.Warning This attribute is evaluated with &lt;c:url&gt;" %>
 <%@ attribute name="extraConf" required="false" rtexprvalue="true" type="java.lang.String" description="Base URL of an AJAX loaded DataTable configuration file which is merged with the default configuration (thanks to the JQuery $.extend function). Warning This attribute is evaluated with &lt;c:url&gt;" %>
 <%@ attribute name="extraFile" required="false" rtexprvalue="true" type="java.lang.String" description="Base URL of an AJAX loaded Javascript file which is then executed (thanks to the JQuery $.getScript function).Warning This attribute is evaluated with &lt;c:url&gt;" %>
-<%@ attribute name="extraFilterId" required="false" rtexprvalue="true" type="java.lang.String" description="" %>
-<%@ attribute name="extraFilterPosition" required="false" rtexprvalue="true" type="java.lang.String" description="" %>
 <%@ attribute name="addButton" required="false" rtexprvalue="true" type="java.lang.Boolean" description="Enable or disable an add link on the top of the table." %>
 <%@ attribute name="addButtonUrl" required="false" rtexprvalue="true" type="java.lang.String" description="If addButton is enabled, used to fill href attribute of a link. Warning This attribute is evaluated with &lt;c:url&gt;" %>
 <%@ attribute name="addButtonLabel" required="false" rtexprvalue="true" type="java.lang.String" description="If addButton is enabled, used to fill the link description." %>
 <%@ attribute name="addButtonCssClass" required="false" rtexprvalue="true" type="java.lang.String" description="If addButton is enabled, appended to the CSS attribute of the link." %>
+<%@ attribute name="extraFilterId" required="false" rtexprvalue="true" type="java.lang.String" description="DOM id of a HTML element you would see appear at the top of the table." %>
+<%@ attribute name="extraFilterPosition" required="false" rtexprvalue="true" type="java.lang.String" description="If extraFilterId is enabled, position at the top of the table." %>
+<%@ attribute name="extraFilterCssClass" required="false" rtexprvalue="true" type="java.lang.String" description="If extraFilterId is enabled, CSS class of the extra filter." %>
+<%@ attribute name="autoWidth" required="false" rtexprvalue="true" type="java.lang.String" description="Enable or disable automatic column width calculation." %>
+<%@ attribute name="deferRender" required="false" rtexprvalue="true" type="java.lang.String" description="Defer the creation of the table elements for each row until they are needed for a draw" %>
+<%@ attribute name="jqueryUI" required="false" rtexprvalue="true" type="java.lang.String" description="Enable jQuery UI ThemeRoller support" %>
+<%@ attribute name="processing" required="false" rtexprvalue="true" type="java.lang.String" description="Enable or disable the display of a 'processing' indicator when the table is being processed (e.g. a sort)." %>
+<%@ attribute name="sort" required="false" rtexprvalue="true" type="java.lang.String" description="Enable or disable sorting of columns." %>
+<%@ attribute name="sortClasses" required="false" rtexprvalue="true" type="java.lang.String" description="Enable or disable the addition of the classes 'sorting_1', 'sorting_2' and 'sorting_3' to the columns which are currently being sorted on." %>
+<%@ attribute name="stateSave" required="false" rtexprvalue="true" type="java.lang.String" description="Enable or disable state saving." %>
+<%@ attribute name="dom" required="false" rtexprvalue="true" type="java.lang.String" description="Specify exactly where in the DOM you want DataTables to inject the various controls it adds to the page." %>
+<%@ attribute name="paginationType" required="false" rtexprvalue="true" type="java.lang.String" description="Choice between the two different built-in pagination interaction methods ('two_button' or 'full_numbers') which present different page controls to the end user." %>
+<%@ attribute name="cookiePrefix" required="false" rtexprvalue="true" type="java.lang.String" description="Override the default prefix that DataTables assigns to a cookie when state saving is enabled." %>
 
 <%@ variable name-from-attribute="dataObjectId" alias="dataItem" variable-class="java.lang.Object" scope="NESTED" %>
 
@@ -65,14 +76,35 @@
 <c:set var="labelsProperty" value="${empty labels ? 'dataTables.default.french.txt' : labels}" />
 <c:set var="extraConfProperty" value="${empty extraConf ? null : extraConf}" />
 <c:set var="extraFileProperty" value="${empty extraFile ? null : extraFile}" />
-<c:set var="extraFilterIdProperty" value="${empty extraFilterId ? null : extraFilterId}" />
-<c:set var="extraFilterPositionProperty" value="${empty extraFilterPosition ? null : extraFilterPosition}" />
 <c:set var="addButtonProperty" value="${empty addButton or addButton eq false ? false : true}" />
 <c:set var="addButtonUrlProperty" value="${empty addButtonUrl ? '' : addButtonUrl}" />
 <c:set var="addButtonLabelProperty" value="${empty addButtonLabel ? 'Ajouter' : addButtonLabel}" />
-<c:set var="addButtonCssClassProperty" value="${empty addButtonCssClass ? 'btn' : addButtonCssClass}" />
+<c:set var="addButtonCssClassProperty" value="${empty addButtonCssClass ? '' : addButtonCssClass}" />
 <c:set var="cssClassProperty" value="${empty cssClass ? 'table table-striped table-bordered table-condensed' : cssClass}" />
 <c:set var="cssStyleProperty" value="${empty style ? '' : style}" />
+<c:set var="extraFilterIdProperty" value="${empty extraFilterId ? null : extraFilterId}" />
+<c:set var="extraFilterPositionProperty" value="${empty extraFilterPosition ? 'right' : extraFilterPosition}" />
+<c:set var="extraFilterCssClassProperty" value="${empty extraFilterCssClass ? '' : extraFilterCssClass}" />
+<c:set var="autoWitdhPreProperty" value="${empty autoWidth ? true : autoWidth}" />
+<c:set var="deferRenderPreProperty" value="${empty deferRender ? false : deferRender}" />
+<c:set var="jqueryUIPreProperty" value="${empty jqueryUI ? false : jqueryUI}" />
+<c:set var="processingPreProperty" value="${empty processing ? false : processing}" />
+<c:set var="sortPreProperty" value="${empty sort ? true : sort}" />
+<c:set var="sortClassesPreProperty" value="${empty sortClasses ? true : sortClasses}" />
+<c:set var="stateSavePreProperty" value="${empty stateSave ? true : stateSave}" />
+<c:choose>
+   <c:when test="${empty dom and jqueryUI eq true}">
+      <c:set var="domProperty" value="'<'H'lfr>t<'F'ip>'}" />
+   </c:when>
+   <c:when test="${empty dom and empty jqueryUI}">
+      <c:set var="domProperty" value="'lfrtip'" />
+   </c:when>
+   <c:otherwise>
+      <c:set var="domProperty" value="${dom}" />
+   </c:otherwise>
+</c:choose>
+<c:set var="paginationTypeProperty" value="${empty paginationType ? 'two_button' : paginationType}" />
+<c:set var="cookiePrefixPreProperty" value="${empty cookiePrefix ? 'SpryMedia_DataTables_' : cookiePrefix}" />
 
 <%-- Evaluation du corps du tag table --%>
 <c:set var="htmlVarManagement" value="true" scope="request" />
@@ -203,6 +235,30 @@
       <c:set var="sortableColCounter" value="${sortableColCounter + 1}" />
    </c:forTokens>
    <c:set var="dataTableSortProperty" value="${dataTableSortProperty}]" />
+   
+   <c:set var="autoWitdhProperty" value=",'bAutoWidth':" />
+   <c:set var="autoWitdhProperty" value="${autoWitdhProperty}${autoWitdhPreProperty}" />
+   
+   <c:set var="deferRenderProperty" value=",'bDeferRender':" />
+   <c:set var="deferRenderProperty" value="${deferRenderProperty}${deferRenderPreProperty}" />
+   
+   <c:set var="jqueryUIProperty" value=",'bJQueryUI':" />
+   <c:set var="jqueryUIProperty" value="${jqueryUIProperty}${jqueryUIPreProperty}" />
+   
+   <c:set var="processingProperty" value=",'bProcessing':" />
+   <c:set var="processingProperty" value="${processingProperty}${processingPreProperty}" />
+   
+   <c:set var="sortProperty" value=",'bSort':" />
+   <c:set var="sortProperty" value="${sortProperty}${sortPreProperty}" />
+   
+   <c:set var="sortClassesProperty" value=",'bSortClasses':" />
+   <c:set var="sortClassesProperty" value="${sortClassesProperty}${sortClassesPreProperty}" />
+   
+   <c:set var="stateSaveProperty" value=",'bStateSave':" />
+   <c:set var="stateSaveProperty" value="${stateSaveProperty}${stateSavePreProperty}" />
+   
+   <c:set var="cookiePrefixProperty" value=",'sCookiePrefix':" />
+   <c:set var="cookiePrefixProperty" value="${cookiePrefixProperty}${cookiePrefixPreProperty}" />
 </c:if>
 
 <script type="text/javascript">
@@ -216,8 +272,10 @@
 
    var oTable_${htmlTableId};	
    var oTable_${htmlTableId}Params = {
+      "sDom": ${domProperty},
       "bInfo": ${infoProperty},
       "bPaginate": ${paginateProperty},
+      "sPaginationType": '${paginationTypeProperty}',
       "bLengthChange": ${lengthPaginateProperty},
       "bFilter": ${filterProperty},
       "aaSorting": [],
@@ -228,13 +286,39 @@
              $('<div style="float: right; margin-right: 10px;"><label><br /><a class="${addButtonCssClassProperty}" href="${addButtonUrlProperty}"><i class="icon-plus"></i> ${addButtonLabelProperty}</a></label></div>').insertBefore('#${htmlTableId}');
           </c:if>
           <c:if test="${not empty extraFilterIdProperty}">
-             $('<div style="float: right; margin-right: 10px;">').html($('#${extraFilterIdProperty}')).insertBefore('#${htmlTableId}');
+             $('<div id="extraFilter_${extraFilterIdProperty}" class="${extraFilterCssClassProperty}" style="float: ${extraFilterPositionProperty}; margin-${extraFilterPositionProperty}: 10px;"><label><br /></label></div>').insertBefore('#${htmlTableId}');
+             $('#${extraFilterIdProperty}').appendTo($('#extraFilter_${extraFilterIdProperty} label'));
           </c:if>
       }
       <c:if test="${labelsProperty}">
       ,"oLanguage": { 
           "sUrl": "<c:url value='${labelsProperty}' />" 
-      }</c:if>${dataTableSortProperty} 
+      }</c:if>
+      ${dataTableSortProperty}
+      <c:if test="${not empty autoWidth}">
+         ${autoWitdhProperty}
+      </c:if>
+      <c:if test="${not empty deferRender}">
+         ${deferRenderProperty}
+      </c:if>
+      <c:if test="${not empty jqueryUI}">
+         ${jqueryUIProperty}
+      </c:if>
+      <c:if test="${not empty processing}">
+         ${processingProperty}
+      </c:if>
+      <c:if test="${not empty sort}">
+         ${sortProperty}
+      </c:if>
+      <c:if test="${not empty sortClasses}">
+         ${sortClassesProperty}
+      </c:if>
+      <c:if test="${not empty stateSave}">
+         ${stateSaveProperty}
+      </c:if>
+      <c:if test="${not empty cookiePrefix}">
+      ${cookiePrefixProperty}
+   </c:if>      
    };
 
 	<c:if test="${not empty extraConfProperty}">

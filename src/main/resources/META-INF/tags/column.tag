@@ -3,9 +3,9 @@
    http://tduchateau.github.com/DataTables-Taglib
    
    Copyright (c) 2012 Thibault Duchateau
-   Licensed under the GPL license.
+   Licensed under the GNU GPLv2 license.
    
-   Version : 1.0.0
+   Version : 1.0.3
  --%>
 <%@ tag language="java" pageEncoding="ISO-8859-1" %>
 
