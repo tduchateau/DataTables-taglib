@@ -120,7 +120,7 @@
          </ul>
          <span class="label label-success">Example</span> The following configuration ...
                
-<pre class="brush:xml, highlight:1">
+<script type="syntaxhighlighter" class="brush:xml"><![CDATA[
 <datatables:table data="${personList}" htmlTableId="personTable" dataObjectId="row" addButton="true" addButtonUrl="${myUrl}" addButtonLabel="<i class='icon-plus'></i> Add a person">
    &lt;datatables:column title="#" property="id" />
    &lt;datatables:column title="Name" property="firstName" sortable="true" />
@@ -130,7 +130,7 @@
    &lt;/datatables:column>
    &lt;datatables:column title="Street" property="street1" sortable="true" />
 </datatables:table>
-</pre>                 
+]]></script>        
 
      ... will produce the following table :<br /><br />
      <table class="table table-striped table-bordered table-condensed" id="personTableAddButton">
