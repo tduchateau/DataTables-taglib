@@ -1,0 +1,250 @@
+<!doctype html>
+<html>
+<head>
+  <meta content="text/html;charset=UTF-8" http-equiv="Content-Type" />
+  <meta name="description" content="JSP taglib for DataTables, an awesome JQuery plugin" />
+  <meta name="author" content="Thibault Duchateau" />
+  <meta name="keywords" content="web,java,jee,taglib,jquery,datatables,tag,bootstrap" />
+  
+  <title>Extra configuration - DataTables Taglib</title>
+  
+  <link href="/css/fwk/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="/css/app/default.extra.css" rel="stylesheet">
+  
+  <link href="/css/fwk/jquery.dataTables.css" rel="stylesheet">
+  
+  <link href="/css/fwk/shCore.css" rel="stylesheet">
+  
+  <link href="/css/fwk/shThemeDefault.css" rel="stylesheet">
+  
+  <link href="/css/fwk/shThemeEclipse.css" rel="stylesheet">
+  
+
+  <style type="text/css">
+    body {
+      padding-top: 60px;
+      padding-bottom: 40px;
+    }
+  </style>
+  
+  <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div style="position: fixed; top: 40%; left: 10px; border: 0;">
+    <h4>GitHub</h4>
+    <br />
+    <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=tduchateau&repo=DataTables-taglib&type=watch&count=true"
+      allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+    <br />
+    <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=tduchateau&repo=DataTables-taglib&type=fork&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="110px" height="20px"></iframe>
+    <br />
+    <hr />
+    <h4>Share</h4>
+    <br />
+    <iframe allowtransparency="true" frameborder="0" scrolling="no"
+            src="https://platform.twitter.com/widgets/tweet_button.html?text=DataTables taglib, a taglib for DataTables in Java/JEE based web application! http://tduchateau.github.com/DataTables-taglib/&count=horizontal"
+            style="width:110px; height:20px;"></iframe>
+  </div>
+  <a href="https://github.com/tduchateau/DataTables-Taglib">
+    <img style="position: fixed; top: 0px; right: 0; border: 0; z-index: 1500;"
+          src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"
+          alt="Fork me on GitHub"></a>
+  
+  <div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </a>
+        <a class="brand" href="#" style="color: white;">
+          DataTables Taglib 
+          <span style="font-size: 9px;">v1.0.3</span>
+        </a>
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li ><a href="/index.html">Overview</a></li>
+            <li ><a href="/features.html">Features</a></li>
+            <li ><a href="/basic.html">Basic example</a></li>
+            <li class="active"><a href="/extras.html">Extras</a></li>
+            <li ><a href="/reference.html">Reference</a></li>
+            <li ><a href="/download.html">Download</a></li>
+            <li ><a href="/changelog.html">Changelog</a></li>
+          </ul>
+          <ul class="nav pull-right">
+            <li><a href="http://blog.tduchateau.fr">Blog</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container">
+    <style type="text/css">
+  body {
+    padding-top: 90px;
+  }
+</style>
+  
+<div class="subnav subnav-fixed">
+  <ul class="nav nav-pills">
+    <li ><a href="/extras/internationalisation.html">Internationalisation</a></li>
+    <li ><a href="/extras/add.html">Add functionnality</a></li>
+    <li ><a href="/extras/rowid.html">Row ID</a></li>
+    <li ><a href="/extras/extrafilter.html">Extra filter</a></li>
+    <li ><a href="/extras/extrafile.html">Extra file</a></li>
+    <li class="active"><a href="/extras/extraconf.html">Extra configuration</a></li>
+  </ul>
+</div>
+
+          
+<div class="row">
+   <div class="span12">
+      <h2>Extra configuration</h2>
+      <hr />
+   </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <p>
+      If you need DataTables configuration that is (still) not supported by the taglib, there's a fall-back position :-)
+    </p>
+    <p>
+      Indeed, the <a href="reference.html#table_tagExtraConf">extraConf</a> attribute allows you, as for the <a href="reference.html#table_tagExtraFile">extraFile</a> attribute, to externalize the configuration in a JS file which will be, for this attribute, "AJAX loaded" and merged with the first generated taglib configuration, before DataTables initialization.
+    </p>
+    <p>
+      Just be aware that if you use the same configuration option in both taglib attributes and extraConf file, the one from the extraConf file will overwrite the other.
+    </p>
+    <p>
+        <span class="label label-important">Important</span> The configuration within the extraConf file must be JSON formated.
+      </p>
+    <p>
+      <span class="label label-info">Info</span> The <a href="reference.html#table_tagExtraConf">extraConf</a> attribute in internally evaluated with the JSTL <strong>&lt;c:url&gt;</strong> tag.
+    </p>
+    <br />
+    <span class="label label-success">Example</span> The following configuration ...
+<script type="syntaxhighlighter" class="brush:js"><![CDATA[
+  <datatables:table data="${personList}" htmlTableId="personTable" dataObjectId="row" extraConf="/js/dataTables/myExtraConf.js">
+    &lt;datatables:column title="#" property="id" />
+    &lt;datatables:column title="Name" property="firstName" sortable="true" />
+    &lt;datatables:column title="Email" property="mail" sortable="true" />
+    &lt;datatables:column title="City" sortable="true">
+      &lt;c:out value="${address.city.label}" /&gt;
+    &lt;/datatables:column>
+    &lt;datatables:column title="Street" property="street1" sortable="true" />
+  </datatables:table>
+&nbsp;
+]]></script>
+                     ... with the following file <strong>/js/dataTables/myExtraConf.js</strong> ...
+<script type="syntaxhighlighter" class="brush:js"><![CDATA[
+{
+  "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    $('td:eq(0)', nRow).css('border-color', 'red');
+    $('td:eq(1)', nRow).css('border-color', 'green');
+    $('td:eq(2)', nRow).css('border-color', 'black');
+    $('td:eq(3)', nRow).css('border-color', 'blue');
+    $('td:eq(4)', nRow).css('border-color', 'yellow');
+    return nRow; 
+  }
+}
+&nbsp;  
+]]></script>      
+     <p>
+      ... will produce the following table :<br /><br />
+       
+       <table class="table table-striped table-bordered table-condensed" id="personTableExtraConf">
+          <thead>
+             <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>City</th>
+                <th>Street</th>
+             </tr>
+          </thead>
+          <tbody>
+             <tr><td>1</td><td>Ezekiel</td><td>sem@Curabitur.org</td><td>Moline</td><td>Ap #808-9250 Metus. Ave</td></tr><tr><td>2</td><td>Elijah</td><td>non.enim.commodo@urna.edu</td><td>Martinsburg</td><td>5876 Adipiscing Rd.</td></tr><tr><td>3</td><td>Colette</td><td>non.leo@Nullafacilisi.edu</td><td>Jefferson City</td><td>Ap #186-4229 Nec Road</td></tr><tr><td>4</td><td>Barry</td><td>Aliquam.auctor.velit@gravidamolestie.org</td><td>Detroit</td><td>P.O. Box 121, 2022 Interdum. Avenue</td></tr><tr><td>5</td><td>Leila</td><td>cubilia@Nuncmauris.org</td><td>City of Industry</td><td>P.O. Box 501, 3857 Risus. St.</td></tr><tr><td>6</td><td>Cedric</td><td>mus.Donec.dignissim@musProin.ca</td><td>Westfield</td><td>669 Ullamcorper. Rd.</td></tr><tr><td>7</td><td>Athena</td><td>pharetra.nibh@velnisl.com</td><td>Meriden</td><td>Ap #506-5573 Tincidunt Avenue</td></tr><tr><td>8</td><td>Cathleen</td><td>Vestibulum@rhoncusProinnisl.ca</td><td>Iowa City</td><td>374-5661 Eget St.</td></tr><tr><td>9</td><td>Rogan</td><td>vel@velfaucibus.com</td><td>Las Cruces</td><td>2394 Consectetuer St.</td></tr><tr><td>10</td><td>Lillian</td><td>amet@eget.com</td><td>Sacramento</td><td>3982 Lacus Rd.</td></tr><tr><td>11</td><td>Karyn</td><td>cubilia@Utsemperpretium.edu</td><td>Davis</td><td>P.O. Box 189, 3416 Lacus. Av.</td></tr><tr><td>12</td><td>Jamal</td><td>In.at.pede@eleifendnuncrisus.ca</td><td>Port Huron</td><td>4537 Lorem Rd.</td></tr><tr><td>13</td><td>Robert</td><td>eleifend.egestas.Sed@penatibuset.com</td><td>Jeffersontown</td><td>Ap #343-8246 Fusce Avenue</td></tr><tr><td>14</td><td>Cullen</td><td>sed.sapien@magnis.edu</td><td>Gloucester</td><td>P.O. Box 530, 4839 Lorem Rd.</td></tr><tr><td>15</td><td>Judith</td><td>tempor.augue@sem.edu</td><td>New Britain</td><td>325-6830 Sit St.</td></tr><tr><td>16</td><td>Roanna</td><td>pharetra.Nam.ac@acipsumPhasellus.ca</td><td>Macomb</td><td>Ap #693-8370 Dolor Rd.</td></tr><tr><td>17</td><td>Mark</td><td>purus.ac.tellus@et.ca</td><td>Omaha</td><td>7336 Tempor Road</td></tr><tr><td>18</td><td>Clayton</td><td>dui.semper.et@Nuncsollicitudincommodo.ca</td><td>Butte</td><td>3452 Eget Rd.</td></tr><tr><td>19</td><td>Eden</td><td>sociis.natoque.penatibus@vehiculaaliquetlibero.ca</td><td>Hartford</td><td>P.O. Box 165, 1761 A Ave</td></tr><tr><td>20</td><td>Chester</td><td>Suspendisse@consectetuereuismodest.com</td><td>Pittsfield</td><td>Ap #801-5772 Enim Ave</td></tr><tr><td>21</td><td>Kimberley</td><td>est.Nunc@ut.org</td><td>Los Alamitos</td><td>2472 Varius Rd.</td></tr><tr><td>22</td><td>Travis</td><td>justo.Proin.non@Quisqueaclibero.org</td><td>Batavia</td><td>P.O. Box 686, 6731 Ultrices Av.</td></tr><tr><td>23</td><td>Thaddeus</td><td>Mauris@temporerat.ca</td><td>Buffalo</td><td>Ap #202-7051 Aliquet Rd.</td></tr><tr><td>24</td><td>Salvador</td><td>mauris.eu@Cras.edu</td><td>Little Rock</td><td>P.O. Box 109, 655 Rutrum Ave</td></tr><tr><td>25</td><td>Oscar</td><td>ipsum@quamvel.edu</td><td>Dearborn</td><td>Ap #562-2088 Odio. Road</td></tr><tr><td>26</td><td>Lars</td><td>diam.at@Duis.org</td><td>Santa Rosa</td><td>P.O. Box 460, 4598 Rhoncus Road</td></tr><tr><td>27</td><td>Asher</td><td>nibh.sit.amet@etarcuimperdiet.com</td><td>Sonoma</td><td>371-8324 Sed Rd.</td></tr><tr><td>28</td><td>Macy</td><td>elit.Curabitur@consequatdolorvitae.org</td><td>Cleveland</td><td>8071 Nunc St.</td></tr><tr><td>29</td><td>Jared</td><td>Duis.cursus@Duisvolutpat.org</td><td>Aguadilla</td><td>8036 Pede. Ave</td></tr><tr><td>30</td><td>Joseph</td><td>ornare.libero.at@ornareplacerat.ca</td><td>Revere</td><td>543-6899 Mi. Ave</td></tr><tr><td>31</td><td>Gemma</td><td>pede.nonummy@nonfeugiat.com</td><td>Galesburg</td><td>7338 Magna. Av.</td></tr><tr><td>32</td><td>Ina</td><td>tristique.ac.eleifend@dolorquam.edu</td><td>Grafton</td><td>218-9122 Eu Rd.</td></tr><tr><td>33</td><td>Vance</td><td>bibendum.fermentum.metus@loremfringillaornare.edu</td><td>Hilo</td><td>P.O. Box 602, 8965 Lorem Road</td></tr><tr><td>34</td><td>Faith</td><td>Sed.eget.lacus@duiSuspendisse.edu</td><td>Chicago</td><td>Ap #647-8210 Aliquet Av.</td></tr><tr><td>35</td><td>Lisandra</td><td>pede.nec.ante@Nulla.ca</td><td>Billings</td><td>Ap #134-4463 Cursus Ave</td></tr><tr><td>36</td><td>Quinn</td><td>mollis.dui@vestibulum.com</td><td>Asheville</td><td>254-180 Metus Street</td></tr><tr><td>37</td><td>Fatima</td><td>cursus@Nam.ca</td><td>Utica</td><td>Ap #676-9538 Nisi Ave</td></tr><tr><td>38</td><td>Griffith</td><td>non.arcu.Vivamus@ipsum.edu</td><td>Moorhead</td><td>444-9916 Consequat Rd.</td></tr><tr><td>39</td><td>Olivia</td><td>tincidunt.Donec@loremsitamet.ca</td><td>Abilene</td><td>P.O. Box 171, 1083 Feugiat. Street</td></tr><tr><td>40</td><td>Xavier</td><td>Mauris.magna.Duis@Vestibulumuteros.edu</td><td>Ontario</td><td>878 Vulputate, Avenue</td></tr><tr><td>41</td><td>Hollee</td><td>blandit.viverra.Donec@porttitorinterdum.edu</td><td>Artesia</td><td>262-7612 Non, Ave</td></tr><tr><td>42</td><td>Brenden</td><td>dolor@pede.ca</td><td>College Park</td><td>P.O. Box 989, 6227 Est. Avenue</td></tr><tr><td>43</td><td>Paul</td><td>arcu@Vivamusnonlorem.edu</td><td>Rohnert Park</td><td>267-3911 Dictum Avenue</td></tr><tr><td>44</td><td>Jana</td><td>tellus@lacus.edu</td><td>Woonsocket</td><td>Ap #902-4279 Libero St.</td></tr><tr><td>45</td><td>Nadine</td><td>morbi@augueSed.ca</td><td>Danbury</td><td>714-1669 Dolor St.</td></tr><tr><td>46</td><td>Kelsie</td><td>lobortis.ultrices@eteros.ca</td><td>Spokane Valley</td><td>Ap #599-7679 Dis St.</td></tr><tr><td>47</td><td>Nathaniel</td><td>nec.mauris@adipiscingMaurismolestie.com</td><td>Dallas</td><td>P.O. Box 616, 7774 Nec, Rd.</td></tr><tr><td>48</td><td>Tarik</td><td>Etiam.ligula.tortor@pharetranibhAliquam.com</td><td>Bethlehem</td><td>3001 Varius Avenue</td></tr><tr><td>49</td><td>Quinlan</td><td>enim.Suspendisse@ipsum.ca</td><td>Ocean City</td><td>P.O. Box 166, 3209 Nascetur Rd.</td></tr><tr><td>50</td><td>Jerry</td><td>euismod.enim@quamelementum.org</td><td>Appleton</td><td>5953 Cras Rd.</td></tr><tr><td>51</td><td>Holly</td><td>orci@mifelis.ca</td><td>Elsmere</td><td>3782 Primis Ave</td></tr><tr><td>52</td><td>Ross</td><td>vel.turpis.Aliquam@pedenonummy.org</td><td>Oneida</td><td>P.O. Box 819, 5692 Arcu. St.</td></tr><tr><td>53</td><td>Leslie</td><td>aliquam.eros.turpis@venenatislacus.org</td><td>Kalamazoo</td><td>Ap #366-5411 Velit. St.</td></tr><tr><td>54</td><td>Jessamine</td><td>ornare@liberoProinmi.org</td><td>Bentonville</td><td>325-6292 Sit Road</td></tr><tr><td>55</td><td>Abel</td><td>semper.erat.in@Nunc.org</td><td>Nashua</td><td>2691 Eu Rd.</td></tr><tr><td>56</td><td>Ciara</td><td>aliquet.lobortis@diamvel.edu</td><td>Reedsport</td><td>7830 Vitae, Ave</td></tr><tr><td>57</td><td>Iola</td><td>nisi.Cum.sociis@scelerisquedui.ca</td><td>San Luis Obispo</td><td>9021 Auctor, Rd.</td></tr><tr><td>58</td><td>Jasmine</td><td>non.lobortis.quis@est.org</td><td>Port Washington</td><td>5964 Mauris Av.</td></tr><tr><td>59</td><td>Kirestin</td><td>pede.ac@estmollisnon.edu</td><td>Manitowoc</td><td>633 Sit Av.</td></tr><tr><td>60</td><td>Erasmus</td><td>elit.erat@tincidunt.ca</td><td>Sandpoint</td><td>919-6405 Ut Ave</td></tr><tr><td>61</td><td>Iona</td><td>primis.in@sed.edu</td><td>Bell Gardens</td><td>256-4406 Enim. Rd.</td></tr><tr><td>62</td><td>Kenyon</td><td>et@sedhendrerit.ca</td><td>Pembroke Pines</td><td>551-6928 Conubia Road</td></tr><tr><td>63</td><td>Donovan</td><td>nunc@MaurismagnaDuis.org</td><td>Murrieta</td><td>1650 Consectetuer St.</td></tr><tr><td>64</td><td>Laura</td><td>primis.in.faucibus@ultriciesligulaNullam.org</td><td>Toledo</td><td>P.O. Box 944, 8422 Odio, St.</td></tr><tr><td>65</td><td>Alma</td><td>Sed.eu.nibh@non.edu</td><td>Santa Ana</td><td>P.O. Box 762, 2567 Auctor Street</td></tr><tr><td>66</td><td>Mercedes</td><td>Pellentesque.habitant@consequatenimdiam.org</td><td>Shamokin</td><td>P.O. Box 762, 1204 Lacus. Rd.</td></tr><tr><td>67</td><td>Nora</td><td>iaculis.odio@euismodestarcu.edu</td><td>Rohnert Park</td><td>139-1835 Metus Avenue</td></tr><tr><td>68</td><td>Evelyn</td><td>cursus.luctus.ipsum@feugiatnon.ca</td><td>South Pasadena</td><td>Ap #355-7344 Cursus, Street</td></tr><tr><td>69</td><td>Gregory</td><td>congue@atsemmolestie.com</td><td>Azusa</td><td>P.O. Box 820, 8229 Risus St.</td></tr><tr><td>70</td><td>Camille</td><td>vestibulum.Mauris@fringilla.org</td><td>Dearborn</td><td>787-4084 Molestie Rd.</td></tr><tr><td>71</td><td>Demetria</td><td>sapien.gravida@Nunclectus.com</td><td>Fairfield</td><td>P.O. Box 648, 5804 Sem Road</td></tr><tr><td>72</td><td>Kane</td><td>odio.a@insodales.com</td><td>Kenosha</td><td>P.O. Box 998, 6765 Pede. Av.</td></tr><tr><td>73</td><td>Macy</td><td>aliquam@magna.org</td><td>Lakewood</td><td>461-5245 Malesuada St.</td></tr><tr><td>74</td><td>Reuben</td><td>felis.Nulla.tempor@vel.ca</td><td>San Bernardino</td><td>P.O. Box 869, 2615 In Rd.</td></tr><tr><td>75</td><td>Judith</td><td>In@facilisis.edu</td><td>Yonkers</td><td>232 Cras Road</td></tr><tr><td>76</td><td>Ainsley</td><td>tempor.est@duiCumsociis.ca</td><td>Elsmere</td><td>3607 Sem Av.</td></tr><tr><td>77</td><td>Zeph</td><td>non.enim.Mauris@liberoMorbiaccumsan.org</td><td>Anaheim</td><td>Ap #150-828 Dui, Av.</td></tr><tr><td>78</td><td>September</td><td>tincidunt.tempus@feugiatnecdiam.org</td><td>Orangeburg</td><td>P.O. Box 834, 5924 Sociis Ave</td></tr><tr><td>79</td><td>Paki</td><td>neque.sed.sem@hendreritconsectetuercursus.ca</td><td>Eatontown</td><td>422-3859 Non, Rd.</td></tr><tr><td>80</td><td>Alexander</td><td>sagittis.semper@lectussitamet.edu</td><td>White Plains</td><td>P.O. Box 618, 8728 Metus Rd.</td></tr><tr><td>81</td><td>Walter</td><td>sit@euodio.edu</td><td>Easthampton</td><td>P.O. Box 977, 4060 Nullam Av.</td></tr><tr><td>82</td><td>Uta</td><td>tellus@eudui.com</td><td>San Fernando</td><td>5680 Lorem, Ave</td></tr><tr><td>83</td><td>MacKenzie</td><td>nibh@vestibulumlorem.ca</td><td>Walnut</td><td>P.O. Box 762, 3967 Ante, Ave</td></tr><tr><td>84</td><td>Kameko</td><td>sociis.natoque.penatibus@ipsumcursus.ca</td><td>Miami Beach</td><td>9424 Hendrerit Ave</td></tr><tr><td>85</td><td>Beau</td><td>egestas.Duis@Aliquamnecenim.ca</td><td>Santa Clarita</td><td>2055 Fringilla Rd.</td></tr><tr><td>86</td><td>Xyla</td><td>nec.imperdiet@dolorvitaedolor.org</td><td>Beverly</td><td>Ap #645-7386 Sed St.</td></tr><tr><td>87</td><td>Chaney</td><td>dui@sagittissemperNam.edu</td><td>Manitowoc</td><td>3590 Ut Street</td></tr><tr><td>88</td><td>Camille</td><td>velit@orciluctuset.ca</td><td>Sutter Creek</td><td>912-8440 Mi, Avenue</td></tr><tr><td>89</td><td>Laura</td><td>dictum.mi@lobortisultrices.org</td><td>Atwater</td><td>P.O. Box 931, 4510 Dictum Ave</td></tr><tr><td>90</td><td>Gavin</td><td>nec@molestiedapibus.ca</td><td>Rye</td><td>P.O. Box 544, 7381 Vulputate St.</td></tr><tr><td>91</td><td>Aurora</td><td>viverra.Donec@varius.org</td><td>Springfield</td><td>8423 Urna St.</td></tr><tr><td>92</td><td>Sloane</td><td>mi@et.edu</td><td>Danville</td><td>490-8587 Duis Road</td></tr><tr><td>93</td><td>Neil</td><td>malesuada.vel@Maecenas.org</td><td>Prescott</td><td>P.O. Box 801, 8392 Magna. Av.</td></tr><tr><td>94</td><td>Ulric</td><td>neque.pellentesque@blandit.com</td><td>Chico</td><td>P.O. Box 705, 7966 Volutpat. Av.</td></tr><tr><td>95</td><td>Caesar</td><td>eget.dictum.placerat@mauriseu.org</td><td>Kalispell</td><td>P.O. Box 224, 4480 Enim. St.</td></tr><tr><td>96</td><td>Rooney</td><td>malesuada.malesuada.Integer@nuncullamcorper.com</td><td>Lake Forest</td><td>P.O. Box 275, 2052 Erat Ave</td></tr><tr><td>97</td><td>Marsden</td><td>magna.Nam@justofaucibus.edu</td><td>Dayton</td><td>218-3571 Libero. St.</td></tr><tr><td>98</td><td>Carissa</td><td>lobortis.Class@iaculis.com</td><td>Orangeburg</td><td>P.O. Box 181, 2213 Augue Street</td></tr><tr><td>99</td><td>Kyle</td><td>interdum.enim@vitae.com</td><td>Kansas City</td><td>P.O. Box 826, 560 Maecenas Rd.</td></tr><tr><td>100</td><td>Devin</td><td>orci@Fuscemi.org</td><td>Riverton</td><td>P.O. Box 895, 9385 Donec Street</td></tr>
+          </tbody>
+       </table>
+     </p>
+  </div>
+</div>
+
+<br />
+
+<div class="row">
+  <div class="span12">
+    <p>
+      Internally, the taglib allways build an JS object containing the DataTables configuration before initializing the table.      
+    </p>
+    <p>
+      The result of the merge :
+    </p>
+    <p>
+<script type="syntaxhighlighter" class="brush:js"><![CDATA[
+var oTable_personTableExtraConfParams = {
+  "bInfo": true,
+  "bPaginate": true,
+  "bLengthChange": true,
+  "bFilter": false,
+  "aaSorting": [],
+  "fnRowCallback": function( nRow, aData, iDisplayIndex, iDisplayIndexFull ) {
+    $('td:eq(0)', nRow).css('border-color', 'red');
+    $('td:eq(1)', nRow).css('border-color', 'green');
+    $('td:eq(2)', nRow).css('border-color', 'black');
+    $('td:eq(3)', nRow).css('border-color', 'blue');
+    $('td:eq(4)', nRow).css('border-color', 'yellow');
+    return nRow; 
+  }
+};
+&nbsp;  
+]]></script> 
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+      <p>
+        <span class="label label-important">Important</span> Note that a global
+        Javascript variable, corresponding to the DataTable object, is available thanks to the taglib with the name :
+        oTable_[tableId]. So, you can still access the table in the extra configuration file and do whatever you want to do.
+      </p>
+      <p>
+        <span class="label label-info">Info</span> It's up to you to organize extra configuration files in your server.
+      </p>
+  </div>
+</div>
+
+    <hr />
+    <footer>
+      Powered by <a href="http://www.nodejs.org/">Node.js</a> and <a href="https://github.com/bevry/docpad">DocPad</a><br />
+      Designed with the not well known but promising <a href="http://twitter.github.com/bootstrap/">Twitter's Bootstrap</a> ;-)
+    </footer>
+  </div>
+  
+  <script src="/js/fwk/jquery-1.7.2.min.js"></script>
+  <script src="/js/fwk/bootstrap.min.js"></script>
+  
+  <script src="/js/fwk/jquery.dataTables.min.js"></script>
+  
+  <script src="/js/fwk/shCore.js"></script>
+  
+  <script src="/js/fwk/shBrushXml.js"></script>
+  
+  <script src="/js/fwk/shBrushJava.js"></script>
+  
+  <script src="/js/fwk/shBrushJScript.js"></script>
+  
+  <script src="/js/app/extraconf.js"></script>
+  
+  
+</body>
+</html>

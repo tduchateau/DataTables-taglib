@@ -6,13 +6,11 @@
   <meta name="author" content="Thibault Duchateau" />
   <meta name="keywords" content="web,java,jee,taglib,jquery,datatables,tag,bootstrap" />
   
-  <title>Downloads - DataTables Taglib</title>
+  <title>Row ID - DataTables Taglib</title>
   
   <link href="/css/fwk/bootstrap.min.css" rel="stylesheet">
   
-  <link href="/css/fwk/shCore.css" rel="stylesheet">
-  
-  <link href="/css/fwk/shThemeEclipse.css" rel="stylesheet">
+  <link href="/css/app/default.extra.css" rel="stylesheet">
   
 
   <style type="text/css">
@@ -66,9 +64,9 @@
             <li ><a href="/index.html">Overview</a></li>
             <li ><a href="/features.html">Features</a></li>
             <li ><a href="/basic.html">Basic example</a></li>
-            <li ><a href="/extras.html">Extras</a></li>
+            <li class="active"><a href="/extras.html">Extras</a></li>
             <li ><a href="/reference.html">Reference</a></li>
-            <li class="active"><a href="/download.html">Download</a></li>
+            <li ><a href="/download.html">Download</a></li>
             <li ><a href="/changelog.html">Changelog</a></li>
           </ul>
           <ul class="nav pull-right">
@@ -81,83 +79,66 @@
   
   <div class="container">
     <style type="text/css">
-   .zip_download_link {
-      display: block;
-      float: left;
-      width: 90px;
-      height: 70px;
-      text-indent: -5000px;
-      overflow: hidden;
-      background: url(/img/sprite_download.png) no-repeat bottom left;
-   }
-   
-   .tar_download_link {
-      display: block;
-      float: left;
-      width: 90px;
-      height: 70px;
-      text-indent: -5000px;
-      overflow: hidden;
-      background: url(/img/sprite_download.png) no-repeat bottom right;
-   }
-   
-   .zip_download_link:hover {
-      background: url(/img/sprite_download.png) no-repeat top left;
-   }
-   
-   .tar_download_link:hover {
-      background: url(/img/sprite_download.png) no-repeat top right;
-   }
+  body {
+    padding-top: 90px;
+  }
 </style>
-   
+  
+<div class="subnav subnav-fixed">
+  <ul class="nav nav-pills">
+    <li ><a href="/extras/internationalisation.html">Internationalisation</a></li>
+    <li ><a href="/extras/add.html">Add functionnality</a></li>
+    <li class="active"><a href="/extras/rowid.html">Row ID</a></li>
+    <li ><a href="/extras/extrafilter.html">Extra filter</a></li>
+    <li ><a href="/extras/extrafile.html">Extra file</a></li>
+    <li ><a href="/extras/extraconf.html">Extra configuration</a></li>
+  </ul>
+</div>
+
+          
 <div class="row">
    <div class="span12">
-      <h2>Download</h2>
+      <h2>Row ID</h2>
       <hr />
    </div>
 </div>
 
 <div class="row">
    <div class="span12">
-      <h3>Manually</h3>
       <p>
-         Clic <a  href="https://github.com/tduchateau/DataTables-Taglib/downloads">this</a> link to get the latest version !
+        In some particular cases, you may need row ID. For that purpose, you can use the following tag attributes :
+         <ul>
+            <li><a href="/reference.html#table_tagHtmlRowIdBase">htmlRowIdBase</a> : this attribute will be evaluated as a member of objects contained in the data collection.</li>
+            <li><a href="/reference.html#table_tagHtmlRowIdPrefix">htmlRowIdPrefix</a> : this attribute is just a string which will be prepended to the <strong>htmlRowIdBase</strong> attribute.</li>
+            <li><a href="/reference.html#table_tagHtmlRowIdSufix">htmlRowIdSufix</a> : this attribute is just a string which will be appended to the <strong>htmlRowIdBase</strong> attribute.</li>
+         </ul>
       </p>
-      <br />
-      <h3>Maven</h3>
-      <p>Add the following repository in your pom.xml :</p>
       <p>
-<pre class="brush: xml">
-<repositories>
-   <repository>
-      <id>tduchateau-maven-repo</id>
-      <url>https://raw.github.com/tduchateau/tduchateau-maven-repo/master/releases</url>
-   </repository>
-</repositories> 
-</pre>
+         <span class="label label-success">Example</span> If you want row id like <strong>person_1</strong>, <strong>person_2</strong>, where 1 and 2 corresponds to the id attribute of the Java object person, just define :
+         <ul>
+            <li>htmlRowIdPrefix = person_</li>
+            <li>htmlRowIdBase = id</li>
+         </ul>
       </p>
-      <br />
-      <p>And declare the following dependency :</p>
       <p>
-<pre class="brush: xml">
-<dependency>
-   <groupId>fr.tduchateau</groupId>
-   <artifactId>datatables-taglib</artifactId>
-   <version>1.0.3</version>
-</dependency>     
-</pre>
+        <span class="label label-success">Example 2</span> If you want row id like <strong>id_1_header</strong>, <strong>id_2_header</strong>, where 1 and 2 corresponds to whatever attribute of a Java object, just define :
+         <ul>
+            <li>htmlRowIdPrefix = id_</li>
+            <li>htmlRowIdBase = id</li>
+            <li>htmlRowIdSufix = _header</li>
+         </ul>
       </p>
-      <br />
-      <h3>Download sources</h3>
-      <div>
-         <a class="zip_download_link" href="https://github.com/tduchateau/DataTables-Taglib/zipball/master">
-            Download this project as a .zip file</a>
-         <a class="tar_download_link" href="https://github.com/tduchateau/DataTables-Taglib/tarball/master">
-            Download this project as a tar.gz file
-         </a>
-      </div>
    </div>
 </div>
+
+<div class="row">
+  <div class="span12">
+    Just remember that the <a href="/reference.html#table_tagHtmlRowIdBase">htmlRowIdBase</a> will be evaluated as a property of an object contained in the <a href="/reference.html#table_tagData">data</a> attribute.
+    <br/> 
+    The two others are just strings. 
+  </div>
+</div>
+
     <hr />
     <footer>
       Powered by <a href="http://www.nodejs.org/">Node.js</a> and <a href="https://github.com/bevry/docpad">DocPad</a><br />
@@ -167,12 +148,6 @@
   
   <script src="/js/fwk/jquery-1.7.2.min.js"></script>
   <script src="/js/fwk/bootstrap.min.js"></script>
-  
-  <script src="/js/fwk/shCore.js"></script>
-  
-  <script src="/js/fwk/shBrushXml.js"></script>
-  
-  <script src="/js/app/download.js"></script>
   
   
 </body>
