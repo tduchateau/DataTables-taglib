@@ -1,0 +1,448 @@
+--- 
+layout: main
+title: Reference - DataTables Taglib
+scripts: ['/js/fwk/jquery.dataTables.min.js', '/js/fwk/jquery.animate-colors-min.js', '/js/fwk/jquery.scrollTo-min.js', '/js/app/reference.js']
+styles: ['/css/fwk/jquery.dataTables.css']
+currentPage: 'reference'
+---
+
+<div class="row">
+   <div class="span12">
+      <h2>Reference</h2>
+      <hr />
+   </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    <ul id="tabs" class="nav nav-tabs">
+      <li class="active"><a href="#table" data-toggle="tab">Table</a></li>
+      <li><a href="#column" data-toggle="tab">Column</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+   <div class="span12">
+<div class="tab-content" style="overflow: visible;">
+   <!-- table tab -->
+   <div class="tab-pane fade in active" id="table">
+      <div class="row">
+         <div class="span12">
+            <p>
+               You will find below the <strong>table</strong> tag attributes full reference.
+            </p>
+            <table class="table table-striped table-bordered table-condensed" id="tableReference">
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th style="5%">Type</th>
+                     <th style="5%">Required</th>
+                     <th>Type</th>
+                     <th>Default</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr id="tagHtmlTableId">
+                     <td>htmlTableId</td>
+                     <td>DOM id of the HTML table.</td>
+                     <td><span class="label">Basic</span></td>
+                     <td>yes</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagData">
+                     <td>data</td>
+                     <td>Collection of data used to populate the table.</td>
+                     <td><span class="label">Basic</span></td>
+                     <td>yes</td>
+                     <td>java.util.Collection</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagDataObjectId">
+                     <td>dataObjectId</td>
+                     <td>Name of the object representing the current row.</td>
+                     <td><span class="label">Basic</span></td>
+                     <td>yes</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagCssClass">
+                     <td>cssClass</td>
+                     <td>CSS class(es) of the HTML table.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td>table table-striped table-bordered table-condensed (Twitter's Boostrap CSS classes)</td>
+                  </tr>
+                  <tr id="tagStyle">
+                     <td>style</td>
+                     <td>CSS style of the HTML table.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagHtmlRowIdPrefix">
+                     <td>htmlRowIdPrefix</td>
+                     <td>String which is prepended to the <strong>htmlRowIdBase</strong> attribute.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagHtmlRowIdSufix">
+                     <td>htmlRowIdSufix</td>
+                     <td>String which is appended to the <strong>htmlRowIdBase</strong> attribute.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagHtmlRowIdBase">
+                     <td>htmlRowIdBase</td>
+                     <td>Useful if you want each row has a DOM id. This attribute is evaluated as an object's property of the <strong>data</strong> attribute.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagInfo">
+                     <td>info</td>
+                     <td>Enable or disable the table information display. This shows
+                        information about the data that is currently visible on the page,
+                        including information about filtered data if that action is being
+                        performed.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>true</td>
+                  </tr>
+                  <tr id="tagPaginate">
+                     <td>paginate</td>
+                     <td>Enable or disable pagination.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>true</td>
+                  </tr>
+                  <tr id="tagLengthPaginate">
+                     <td>lengthPaginate</td>
+                     <td>If <strong>paginate</strong> is enabled, allows the end user to select the size of a formatted page from
+                        a select menu (sizes are 10, 25, 50 and 100).</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>true</td>
+                  </tr>
+                  <tr id="tagFilter">
+                     <td>filter</td>
+                     <td>Enable or disable filtering of data.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>true</td>
+                  </tr>
+                  <tr id="tagLabels">
+                     <td>labels</td>
+                     <td>Base URL of an AJAX loaded file which contains all the labels
+                        used in tables. This attribute is the value for the <a
+                        href="http://datatables.net/plug-ins/i18n">sUrl</a> DataTable
+                        parameter. <br /> <span class="label label-warning">Warning</span>
+                        This attribute is evaluated with <a
+                        href="http://docs.oracle.com/javaee/5/tutorial/doc/bnakh.html#bnakn">&lt;c:url&gt;</a>
+                     </td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagExtraConf">
+                     <td>extraConf</td>
+                     <td>Base URL of an AJAX loaded DataTable configuration file which is
+                        merged with the default configuration (thanks to the JQuery <a
+                        href="http://api.jquery.com/jQuery.extend/">$.extend</a> function).<br />
+                        <span class="label label-warning">Warning</span> This attribute is
+                        evaluated with <a
+                        href="http://docs.oracle.com/javaee/5/tutorial/doc/bnakh.html#bnakn">&lt;c:url&gt;</a>
+                     </td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagExtraFile">
+                     <td>extraFile</td>
+                     <td>Base URL of an AJAX loaded Javascript file which is then
+                        executed (thanks to the JQuery <a
+                        href="http://api.jquery.com/jQuery.getScript/">$.getScript</a>
+                        function). <br /><span class="label label-warning">Warning</span> This attribute is
+                        evaluated with <a
+                        href="http://docs.oracle.com/javaee/5/tutorial/doc/bnakh.html#bnakn">&lt;c:url&gt;
+                     </td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagAddButton">
+                     <td>addButton</td>
+                     <td>Enable or disable an add link on the top of the table.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>true</td>
+                  </tr>
+                  <tr id="tagAddButtonUrl">
+                     <td>addButtonUrl</td>
+                     <td>If <strong>addButton</strong> is enabled, used to fill href
+                        attribute of a link. <br /> <span class="label label-warning">Warning</span>
+                        This attribute is evaluated with <a
+                        href="http://docs.oracle.com/javaee/5/tutorial/doc/bnakh.html#bnakn">&lt;c:url&gt;</a></td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagAddButtonLabel">
+                     <td>addButtonLabel</td>
+                     <td>If <strong>addButton</strong> is enabled, used to fill the link description.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagAddButtonCssClass">
+                     <td>addButtonCssClass</td>
+                     <td>If <strong>addButton</strong> is enabled, appended to the CSS attribute of the link.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <!--<tr id="tagExtraFilterId">
+                     <td>extraFilterId</td>
+                     <td>DOM id of a HTML element you would see appear at the top of the table.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagExtraFilterPosition">
+                     <td>extraFilterPosition</td>
+                     <td>If <strong>extraFilterId</strong> is enabled, position at the top of the table.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String : 'right' or 'left'</td>
+                     <td>right</td>
+                  </tr>
+                  <tr id="tagExtraFilterCssClass">
+                     <td>extraFilterCssClass</td>
+                     <td>If <strong>extraFilterId</strong> is enabled, CSS class of the extra filter.</td>
+                     <td><span class="label label-info">Extra</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>-->
+                  <tr id="tagAutoWidth">
+                     <td>autoWidth</td>
+                     <td>Enable or disable automatic column width calculation.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>true</td>
+                  </tr>
+                  <tr id="tagDeferRender">
+                     <td>deferRender</td>
+                     <td>Defer the creation of the table elements for each row until they are needed for a draw.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>false</td>
+                  </tr>
+                  <tr id="tagJqueryUI">
+                     <td>jqueryUI</td>
+                     <td>Enable jQuery UI ThemeRoller support.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>false</td>
+                  </tr>
+                  <tr id="tagProcessing">
+                     <td>processing</td>
+                     <td>Enable or disable the display of a 'processing' indicator when the table is being processed (e.g. a sort).</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>false</td>
+                  </tr>
+                  <tr id="tagSort">
+                     <td>sort</td>
+                     <td>Enable or disable sorting of columns.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>true</td>
+                  </tr>
+                  <tr id="tagSortClasses">
+                     <td>sortClasses</td>
+                     <td>Enable or disable the addition of the classes 'sorting_1', 'sorting_2' and 'sorting_3' to the columns which are currently being sorted on.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>true</td>
+                  </tr>
+                  <tr id="tagStateSave">
+                     <td>stateSave</td>
+                     <td>Enable or disable state saving.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>false</td>
+                  </tr>
+                  <tr id="tagDom">
+                     <td>dom</td>
+                     <td>Specify exactly where in the DOM you want DataTables to inject the various controls it adds to the page.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td>lfrtip (when <strong>jQueryUI</strong> is false) or <'H'lfr>t<'F'ip> (when <strong>jQueryUI</strong> is true)</td>
+                  </tr>
+                  <tr id="tagPaginationType">
+                     <td>paginationType</td>
+                     <td>Choice between the two different built-in pagination interaction methods ('two_button' or 'full_numbers') which present different page controls to the end user.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.String : two_button or full_numbers</td>
+                     <td>two_button</td>
+                  </tr>
+                  <tr id="tagCookiePrefix">
+                     <td>cookiePrefix</td>
+                     <td>Override the default prefix that DataTables assigns to a cookie when state saving is enabled.</td>
+                     <td><span class="label label-success">Embedded</span></td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td>SpryMedia_DataTables_</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+
+   <!-- column tab -->
+   <div class="tab-pane" id="column">
+      <div class="row">
+         <div class="span12">
+            <p>
+               The <strong>column</strong> tag represents a column of the table.
+            </p>
+            <p>
+               You can write any code in the body of the <strong>column</strong> attribute. It will be evaluated.
+            </p>
+            <p>
+               You will find below the <strong>column</strong> tag attributes full reference.
+            </p>
+            <table class="table table-striped table-bordered table-condensed" id="columnReference">
+               <thead>
+                  <tr>
+                     <th>Name</th>
+                     <th>Description</th>
+                     <th>Required</th>
+                     <th>Type</th>
+                     <th>Default</th>
+                  </tr>
+               </thead>
+               <tbody>        
+                  <tr id="tagProperty">
+                     <td>property</td>
+                     <td>Name of the property in the bean contained in the <strong>data</strong> attribute.</td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr id="tagTitle">
+                     <td>title</td>
+                     <td>Title of the column (th)</td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>style</td>
+                     <td>HTML style attribute which will affect every td of the column.</td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>headerStyle</td>
+                     <td>HTML style attribute which will affect the th cell.</td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>cssClass</td>
+                     <td>CSS class which will affect every td of the column.</td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>headerCssClass</td>
+                     <td>CSS class which will affect the th cell.</td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+                  <tr>
+                     <td>sortable</td>
+                     <td>Enable or disable sorting on the column.</td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>false</td>
+                  </tr>
+                  <tr>
+                     <td>filterable</td>
+                     <td>Enable or disable filtering on the column. <br/><span class="label label-warning">Warning</span>
+                        It requires the <a href="http://datatables.net/extras/tabletools/">TableTools</a> plugin (JS and CSS files)</td>
+                     <td>no</td>
+                     <td>java.lang.Boolean</td>
+                     <td>false</td>
+                  </tr>
+                  <tr>
+                     <td>filterType</td>
+                     <td>If <strong>filterable</strong> is enabled, allows to change the
+                        filter type between select (default) and input.
+                     </td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td>select</td>
+                  </tr>                   
+                  <tr>
+                     <td>filterCssClass</td>
+                     <td>If <strong>filterable</strong> is enabled, allows to add CSS class to the filter field.</td>
+                     <td>no</td>
+                     <td>java.lang.String</td>
+                     <td></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </div>
+   </div>
+   
+   <br />
+   
+   <div class="row">
+      <div class="span12">
+         <span class="label">Basic</span> : basic taglib feature
+         <span class="label label-success">Embedded</span> : DataTables embedded native feature
+         <span class="label label-info">Extra</span> : Taglib extra feature
+      </div>
+   </div>
+</div>
+</div>
+</div>

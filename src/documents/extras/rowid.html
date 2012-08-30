@@ -1,0 +1,51 @@
+--- 
+layout: extra
+title: Row ID - DataTables Taglib
+scripts: []
+styles: ['/css/app/default.extra.css']
+currentPage: 'extras'
+currentExtraPage: 'rowid'
+---
+          
+<div class="row">
+   <div class="span12">
+      <h2>Row ID</h2>
+      <hr />
+   </div>
+</div>
+
+<div class="row">
+   <div class="span12">
+      <p>
+        In some particular cases, you may need row ID. For that purpose, you can use the following tag attributes :
+         <ul>
+            <li><a href="/reference.html#table_tagHtmlRowIdBase">htmlRowIdBase</a> : this attribute will be evaluated as a member of objects contained in the data collection.</li>
+            <li><a href="/reference.html#table_tagHtmlRowIdPrefix">htmlRowIdPrefix</a> : this attribute is just a string which will be prepended to the <strong>htmlRowIdBase</strong> attribute.</li>
+            <li><a href="/reference.html#table_tagHtmlRowIdSufix">htmlRowIdSufix</a> : this attribute is just a string which will be appended to the <strong>htmlRowIdBase</strong> attribute.</li>
+         </ul>
+      </p>
+      <p>
+         <span class="label label-success">Example</span> If you want row id like <strong>person_1</strong>, <strong>person_2</strong>, where 1 and 2 corresponds to the id attribute of the Java object person, just define :
+         <ul>
+            <li>htmlRowIdPrefix = person_</li>
+            <li>htmlRowIdBase = id</li>
+         </ul>
+      </p>
+      <p>
+        <span class="label label-success">Example 2</span> If you want row id like <strong>id_1_header</strong>, <strong>id_2_header</strong>, where 1 and 2 corresponds to whatever attribute of a Java object, just define :
+         <ul>
+            <li>htmlRowIdPrefix = id_</li>
+            <li>htmlRowIdBase = id</li>
+            <li>htmlRowIdSufix = _header</li>
+         </ul>
+      </p>
+   </div>
+</div>
+
+<div class="row">
+  <div class="span12">
+    Just remember that the <a href="/reference.html#table_tagHtmlRowIdBase">htmlRowIdBase</a> will be evaluated as a property of an object contained in the <a href="/reference.html#table_tagData">data</a> attribute.
+    <br/> 
+    The two others are just strings. 
+  </div>
+</div>
