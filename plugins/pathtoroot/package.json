@@ -1,0 +1,9 @@
+{
+    "name": "docpad-plugin-pathtoroot",
+    "version": "0.1.0",
+    "private": true,
+    "keywords": [
+        "docpad-plugin"
+    ],
+    "main": "./pathtoroot.plugin.coffee"
+}
