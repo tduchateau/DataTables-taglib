@@ -9,11 +9,11 @@ layout: main
   
 <div class="subnav subnav-fixed">
   <ul class="nav nav-pills">
-    <li <% if @document.currentExtraPage == 'internationalisation': %>class="active"<% end %>><a href="extras/internationalisation.html">Internationalisation</a></li>
-    <li <% if @document.currentExtraPage == 'add': %>class="active"<% end %>><a href="extras/add.html">Add functionnality</a></li>
-    <li <% if @document.currentExtraPage == 'rowid': %>class="active"<% end %>><a href="extras/rowid.html">Row ID</a></li>
-    <li <% if @document.currentExtraPage == 'extrafile': %>class="active"<% end %>><a href="extras/extrafile.html">Extra file</a></li>
-    <li <% if @document.currentExtraPage == 'extraconf': %>class="active"<% end %>><a href="extras/extraconf.html">Extra configuration</a></li>
+    <li <% if @document.currentExtraPage == 'internationalisation': %>class="active"<% end %>><a href="internationalisation.html">Internationalisation</a></li>
+    <li <% if @document.currentExtraPage == 'add': %>class="active"<% end %>><a href="add.html">Add functionnality</a></li>
+    <li <% if @document.currentExtraPage == 'rowid': %>class="active"<% end %>><a href="rowid.html">Row ID</a></li>
+    <li <% if @document.currentExtraPage == 'extrafile': %>class="active"<% end %>><a href="extrafile.html">Extra file</a></li>
+    <li <% if @document.currentExtraPage == 'extraconf': %>class="active"<% end %>><a href="extraconf.html">Extra configuration</a></li>
   </ul>
 </div>
 
