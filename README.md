@@ -11,4 +11,5 @@ A sample web application is now available, try it !
 ***Important note*** 
 
 The project has been totally rewritten and improved with much more features. 
-It's now called Dandelion-Datatables => [https://github.com/dandelion-datatables](https://github.com/dandelion-datatables)
+
+It's now called Dandelion-Datatables => [https://github.com/dandelion/dandelion-datatables](https://github.com/dandelion/dandelion-datatables)
